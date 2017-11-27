@@ -41,31 +41,27 @@ void listInsert(string insertKey, int insertValue, ListType &list) {
 
 //fix later
 bool listRemove(string removeTarget, ListType &list) {
-	if (list == NULL) {
-		return false;
-	}
-	Node *curr = list;
-	if (curr->key == removeTarget) {
-		list = list->next;
-		delete curr;
-		return true;
-	}
-	while (curr->next != NULL) {
-		if (curr->next->key == removeTarget) {
-			Node *temp = curr->next;
-			curr->next = curr->next->next;
-			delete temp;
-			return true;
-		}
-		curr = curr->next;
-	}
-	return false;
+    if (list == NULL) {
+        return false;
+    }
+    Node *curr = list;
+    if (curr->key == removeTarget) {
+        list = list->next;
+        delete curr;
+        return true;
+    }
+    for (Node *curr = list; curr->next != NULL; curr = curr->next) {
+        if (curr->next->key == removeTarget) {
+            Node *temp = curr->next;
+            curr->next = curr->next->next;
+            delete temp;
+            return true;
+        }
+    }
+    return false;
 }
 
 void listPrint(ListType &list) {
-	if (list == NULL) {
-		return;
-	}
 	Node *curr = list;
 	while (curr != NULL) {
 		cout << curr->key << " " << curr->value << endl;

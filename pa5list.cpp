@@ -48,6 +48,7 @@ int main() {
     listRemove("brandon",list);
     cout << "removed brandon" << endl;
     listPrint(list);
+    cout << listSize(list) << endl;
 
   return 0;
 }

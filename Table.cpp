@@ -56,7 +56,7 @@ int * Table::lookup(const string &key) {
 }
 
 bool Table::remove(const string &key) {
-    ListType foo = hashTable[hashCode(key)];
+    ListType &foo = hashTable[hashCode(key)];
     if (listRemove(key, foo)) {
         totalEntries--;
         return true;
@@ -65,7 +65,7 @@ bool Table::remove(const string &key) {
 }
 
 bool Table::insert(const string &key, int value) {
-    ListType foo = hashTable[hashCode(key)]; //initializes with = constructor
+    ListType &foo = hashTable[hashCode(key)]; 
     if (listLookup(key, foo) == NULL) {
         listInsert(key, value, foo);
         totalEntries++;

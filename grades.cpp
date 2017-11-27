@@ -100,6 +100,7 @@ void cmd(Table *grades) {
             quit();
         }
         else {
+            cin.ignore(9000, '\n');
             cout << "ERROR: invalid command" << endl;
             help();
         }
@@ -121,7 +122,7 @@ void lookup(Table *grades) {
     cin >> name;
     int *score = grades->lookup(name);
     if (score != NULL) {
-        cout << name << ": " << score << endl;
+        cout << name << ": " << *score << endl;
     } else {
         cout << "This student is not in the table" << endl;
     }
@@ -148,7 +149,9 @@ void remove(Table *grades) {
 }
 
 void print(Table *grades) {
-    grades->printAll();
+    if (grades->numEntries() > 0) {
+        grades->printAll();
+    }
 }
 
 void size(Table *grades) {
