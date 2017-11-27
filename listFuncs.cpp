@@ -82,7 +82,7 @@ int* listLookup(string target, ListType &list) {
 	return NULL;
 }
 
-int listNodes(ListType list) {
+int listSize(ListType list) {
 	int sum = 0;
 	for (Node *curr = list; curr != NULL; curr = curr->next) {
 		sum++;

@@ -31,38 +31,75 @@
 
 
 Table::Table() {
-
+    hashSize = HASH_SIZE;
+    hashTable = new ListType[hashSize];
+    for (int i = 0; i < hashSize; i++) {
+        listInit(hashTable[i]);
+    }
+    totalEntries = 0;
 }
 
 
 Table::Table(unsigned int hSize) {
-
+    hashSize = hSize;
+    hashTable = new ListType[hashSize];
+    for (int i = 0; i < hashSize; i++) {
+        listInit(hashTable[i]);
+    }
+    totalEntries = 0;
 }
 
 
 int * Table::lookup(const string &key) {
-  return NULL;   // dummy return value for stub
+    ListType foo = hashTable[hashCode(key)];
+    return listLookup(key, foo);
 }
 
 bool Table::remove(const string &key) {
-  return false;  // dummy return value for stub
+    ListType foo = hashTable[hashCode(key)];
+    if (listRemove(key, foo)) {
+        totalEntries--;
+        return true;
+    }
+    return false;
 }
 
 bool Table::insert(const string &key, int value) {
-  return false;  // dummy return value for stub
+    ListType foo = hashTable[hashCode(key)]; //initializes with = constructor
+    if (listLookup(key, foo) == NULL) {
+        listInsert(key, value, foo);
+        totalEntries++;
+        return true;
+    }
+    return false;
 }
 
 int Table::numEntries() const {
-  return 0;      // dummy return value for stub
+    return totalEntries;
 }
 
 
 void Table::printAll() const {
-
+    for (int i = 0; i < hashSize; i++) {
+        listPrint(hashTable[i]);
+    }
 }
 
 void Table::hashStats(ostream &out) const {
-  
+    int nonEmpty = 0;
+    int maxLength = 0;
+    for (int i = 0; i < hashSize; i++) {
+        if (listSize(hashTable[i]) != 0) {
+            nonEmpty++;
+        }
+        if (listSize(hashTable[i]) > maxLength) {
+            maxLength = listSize(hashTable[i]);
+        }
+    }
+    out << "Number of buckets: " << hashSize << endl;
+    out << "Number of entries: " << totalEntries << endl;
+    out << "Number of non-empty buckets: " << nonEmpty << endl;
+    out << "Longest chain: " << maxLength << endl;
 }
 
 

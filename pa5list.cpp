@@ -30,21 +30,23 @@ int main() {
     Node *list;
     listInit(list);
     listPrint(list);
-    listRemove("gaurav");
-    listInsert(list, "alex", 0);
-    listInsert(list, "brandon", 2);
-    listInsert(list, "daniel", 3);
+    listRemove("gaurav",list);
+    listInsert("alex", 0, list);
+    listInsert("brandon", 2, list);
+    listInsert("daniel", 3, list); 
+    listInsert("daniel", 3, list); 
+    cout << "about to print list" << endl;
     listPrint(list);
 
-    cout << "alex is pledge #" << *listLookup("alex") << endl;
-    cout << "brandon is pledge #" << *listLookup("brandon") << endl;
-    cout << "daniel is pledge #" << *listLookup("daniel") << endl;
+    cout << "alex is pledge #" << *listLookup("alex",list) << endl;
+    cout << "brandon is pledge #" << *listLookup("brandon",list) << endl;
+    cout << "daniel is pledge #" << *listLookup("daniel",list) << endl;
 
-    cout << "numnodes" << listNodes(list) << endl;
+    cout << "numnodes" << listSize(list) << endl;
     listPrint(list);
 
-    listRemove("brandon");
-    cout << "removed element" << endl;
+    listRemove("brandon",list);
+    cout << "removed brandon" << endl;
     listPrint(list);
 
   return 0;

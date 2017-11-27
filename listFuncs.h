@@ -42,7 +42,7 @@ void listInsert(string insertKey, int insertValue, ListType &list);
 bool listRemove(string removeTarget, ListType &list);
 void listPrint(ListType &list);
 int* listLookup(string target, ListType &list);
-int listNodes(ListType list);
+int listSize(ListType list);
 
 
 
