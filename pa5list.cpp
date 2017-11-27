@@ -25,8 +25,27 @@ using namespace std;
 
 int main() {
 
+    cout << "starting the tester" << endl;
 
+    Node *list;
+    listInit(list);
+    listPrint(list);
+    listRemove("gaurav");
+    listInsert(list, "alex", 0);
+    listInsert(list, "brandon", 2);
+    listInsert(list, "daniel", 3);
+    listPrint(list);
 
+    cout << "alex is pledge #" << *listLookup("alex") << endl;
+    cout << "brandon is pledge #" << *listLookup("brandon") << endl;
+    cout << "daniel is pledge #" << *listLookup("daniel") << endl;
+
+    cout << "numnodes" << listNodes(list) << endl;
+    listPrint(list);
+
+    listRemove("brandon");
+    cout << "removed element" << endl;
+    listPrint(list);
 
   return 0;
 }

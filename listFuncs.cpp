@@ -29,3 +29,63 @@ Node::Node(const string &theKey, int theValue, Node *n) {
 
 //*************************************************************************
 // put the function definitions for your list functions below
+
+void listInit(ListType &list) {
+	list = NULL;
+}
+
+void listInsert(string insertKey, int insertValue, ListType &list) {
+	Node *newNode = new Node(insertKey, insertValue, list);
+	list = newNode;
+}
+
+//fix later
+bool listRemove(string removeTarget, ListType &list) {
+	if (list == NULL) {
+		return false;
+	}
+	Node *curr = list;
+	if (curr->key == removeTarget) {
+		list = list->next;
+		delete curr;
+		return true;
+	}
+	while (curr->next != NULL) {
+		if (curr->next->key == removeTarget) {
+			Node *temp = curr->next;
+			curr->next = curr->next->next;
+			delete temp;
+			return true;
+		}
+		curr = curr->next;
+	}
+	return false;
+}
+
+void listPrint(ListType &list) {
+	if (list == NULL) {
+		return;
+	}
+	Node *curr = list;
+	while (curr != NULL) {
+		cout << curr->key << " " << curr->value << endl;
+		curr = curr->next;
+	}
+}
+
+int* listLookup(string target, ListType &list) {
+	for (Node *curr = list; curr != NULL; curr = curr->next) {
+		if (curr->key == target) {
+			return &(curr->value);
+		}
+	}
+	return NULL;
+}
+
+int listNodes(ListType list) {
+	int sum = 0;
+	for (Node *curr = list; curr != NULL; curr = curr->next) {
+		sum++;
+	}
+	return sum;
+}

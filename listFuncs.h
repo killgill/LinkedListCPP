@@ -36,6 +36,13 @@ typedef Node * ListType;
 //that operate on a list here (i.e., each includes a parameter of type
 //ListType or ListType&).  No function definitions go in this file.
 
+//Returns the node's address or NULL
+void listInit(ListType &list);
+void listInsert(string insertKey, int insertValue, ListType &list);
+bool listRemove(string removeTarget, ListType &list);
+void listPrint(ListType &list);
+int* listLookup(string target, ListType &list);
+int listNodes(ListType list);
 
 
 
