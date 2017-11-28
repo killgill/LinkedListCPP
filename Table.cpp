@@ -1,5 +1,5 @@
-// Name:
-// USC NetID:
+// Name: Karan Singh Gill
+// USC NetID: karansig
 // CSCI 455 PA5
 // Fall 2017
 
@@ -33,9 +33,7 @@
 Table::Table() {
     hashSize = HASH_SIZE;
     hashTable = new ListType[hashSize];
-    for (int i = 0; i < hashSize; i++) {
-        listInit(hashTable[i]);
-    }
+    for (int i = 0; i < hashSize; i++) listInit(hashTable[i]);
     totalEntries = 0;
 }
 
@@ -43,9 +41,7 @@ Table::Table() {
 Table::Table(unsigned int hSize) {
     hashSize = hSize;
     hashTable = new ListType[hashSize];
-    for (int i = 0; i < hashSize; i++) {
-        listInit(hashTable[i]);
-    }
+    for (int i = 0; i < hashSize; i++) listInit(hashTable[i]);
     totalEntries = 0;
 }
 
@@ -80,21 +76,17 @@ int Table::numEntries() const {
 
 
 void Table::printAll() const {
-    for (int i = 0; i < hashSize; i++) {
-        listPrint(hashTable[i]);
-    }
+    for (int i = 0; i < hashSize; i++) listPrint(hashTable[i]);
 }
 
 void Table::hashStats(ostream &out) const {
     int nonEmpty = 0;
     int maxLength = 0;
     for (int i = 0; i < hashSize; i++) {
-        if (listSize(hashTable[i]) != 0) {
+        if (listSize(hashTable[i]) != 0)
             nonEmpty++;
-        }
-        if (listSize(hashTable[i]) > maxLength) {
+        if (listSize(hashTable[i]) > maxLength) 
             maxLength = listSize(hashTable[i]);
-        }
     }
     out << "Number of buckets: " << hashSize << endl;
     out << "Number of entries: " << totalEntries << endl;

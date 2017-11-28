@@ -1,5 +1,5 @@
-// Name:
-// USC NetID:
+// Name: Karan Singh Gill
+// USC NetID: karansig
 // CSCI 455 PA5
 // Fall 2017
 
@@ -52,9 +52,8 @@ int main(int argc, char * argv[]) {
     grades = new Table(hashSize);
 
   }
-  else {   // no command line args given -- use default table size
+  else    // no command line args given -- use default table size
     grades = new Table();
-  }
 
 
   grades->hashStats(cout);
@@ -72,33 +71,24 @@ void cmd(Table *grades) {
         cout << "cmd>";
         string command;
         cin >> command;
-        if (command == "insert") {
+        if (command == "insert")
             insert(grades);
-        }
-        else if (command == "change") {
+        else if (command == "change")
             change(grades);
-        }
-        else if (command == "lookup") {
+        else if (command == "lookup")  
             lookup(grades);
-        }
-        else if (command == "remove") {
+        else if (command == "remove")
             remove(grades);
-        }
-        else if (command == "print") {    // Prints out all names and scores in the table.
+        else if (command == "print")    // Prints out all names and scores in the table.
             print(grades);
-        }
-        else if (command == "size") {     // Prints out the number of entries in the table.
+        else if (command == "size")     // Prints out the number of entries in the table.
             size(grades);
-        }
-        else if (command == "stats") {    // Prints out statistics about the hash table at this point.
+        else if (command == "stats")   // Prints out statistics about the hash table at this point.
             stats(grades);
-        }
-        else if (command == "help") {
+        else if (command == "help")
             help();
-        }
-        else if (command == "quit") {     // Exits the program.
+        else if (command == "quit")    // Exits the program.
             quit();
-        }
         else {
             cin.ignore(9000, '\n');
             cout << "ERROR: invalid command" << endl;
@@ -111,9 +101,8 @@ void insert(Table *grades) {
     string name;
     int score;
     cin >> name >> score;
-    if (!grades->insert(name, score)) {
+    if (!grades->insert(name, score))
         cout << "This student is already present in the table" << endl;
-    }
     grades->insert(name, score);
 }
 
@@ -121,37 +110,33 @@ void lookup(Table *grades) {
     string name;
     cin >> name;
     int *score = grades->lookup(name);
-    if (score != NULL) {
+    if (score != NULL)
         cout << name << ": " << *score << endl;
-    } else {
-        cout << "This student is not in the table" << endl;
-    }
+    else
+        cout << "This student is not present in the table" << endl;
 }
 
 void change(Table *grades) {
     string name;
     int score;
     cin >> name >> score;
-    if (grades->remove(name)) {
+    if (grades->remove(name))
         grades->insert(name, score);
-    } else {
+    else
         cout << "This student is not present in the table" << endl;
-    }
 
 }
 
 void remove(Table *grades) {
     string name;
     cin >> name;
-    if (!grades->remove(name)) {
+    if (!grades->remove(name))
         cout << "This student is not present in the table" << endl;
-    }
 }
 
 void print(Table *grades) {
-    if (grades->numEntries() > 0) {
+    if (grades->numEntries() > 0)
         grades->printAll();
-    }
 }
 
 void size(Table *grades) {

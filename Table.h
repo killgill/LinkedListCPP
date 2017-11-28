@@ -1,5 +1,5 @@
-// Name:
-// USC NetID:
+// Name: Karan Singh Gill
+// USC NetID: karansig
 // CSCI 455 PA5
 // Fall 2017
 

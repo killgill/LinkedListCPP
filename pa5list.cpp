@@ -1,6 +1,7 @@
-// Name:
-// USC NetID:
-// CS 455 PA5
+// Name: Karan Singh Gill
+// USC NetID: karansig
+// CSCI 455 PA5
+// Fall 2017
 
 // pa5list.cpp
 // a program to test the linked list code necessary for a hash table chain
