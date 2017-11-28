@@ -20,11 +20,11 @@
 #include <cstdlib>
 
 //prototypes
-void cmd(Table * grades);
-void insert(Table * grades);
-void change(Table * grades);
-void lookup(Table * grades);
-void remove(Table * grades);
+void cmd(Table *grades);
+void insert(Table *grades);
+void change(Table *grades);
+void lookup(Table *grades);
+void remove(Table *grades);
 void print(Table *grades);
 void size(Table *grades);
 void stats(Table *grades);
