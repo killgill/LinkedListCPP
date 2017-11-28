@@ -70,7 +70,7 @@ bool listRemove(string removeTarget, ListType &list) {
 void listPrint(ListType &list) {
 	Node *curr = list;
 	while (curr != NULL) {
-		cout << "Name: " << curr->key << " " << "Score: " << curr->value << endl;
+		cout curr->key << " " << curr->value << endl;
 		curr = curr->next;
 	}
 }
