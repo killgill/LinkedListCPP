@@ -55,6 +55,8 @@ bool listRemove(string removeTarget, ListType &list) {
     //ahead of the current node, it would cause a segmentation fault if the last item on the list was removed
     //thus, in order to prevent the segmentation fault, this loop looks ahead rather than at the current element
     //this enables the pointer to be correctly set if the last item is deleted
+    //as mentioned in the README, a friend from college helped me with this, my original, non-working code that
+    //caused seg faults is commented below
     for (Node *curr = list; curr->next != NULL; curr = curr->next) {
         if (curr->next->key == removeTarget) {
             Node *temp = curr->next;
@@ -65,6 +67,18 @@ bool listRemove(string removeTarget, ListType &list) {
     }
     return false;//if nothing works, it returns false
 }
+//version of function that causes segmentation faults if the tail is deleted and the pointer from the new tail is accessed
+//bool listRemove(string removeTarget, ListType &list) {
+//    for (Node *curr = list; curr != NULL; curr = curr->next) {
+//        if (curr->key == removeTarget) {
+//            Node *temp = curr;
+//            curr = curr->next;
+//            delete temp;
+//            return true;
+//        }
+//    }
+//    return false;
+//}
 
 //prints every node in the list going from the head to the tail
 void listPrint(ListType &list) {
