@@ -19,6 +19,7 @@
 // cstdlib needed for call to atoi
 #include <cstdlib>
 
+//prototypes
 void cmd(Table * grades);
 void insert(Table * grades);
 void change(Table * grades);
@@ -113,9 +114,9 @@ void insert(Table *grades) {
 void lookup(Table *grades) {
     string name;
     cin >> name;
-    int *score = grades->lookup(name);
-    if (score != NULL)
-        cout << name << ": " << *score << endl;
+    int *score = grades->lookup(name);//points at the score
+    if (score != NULL)//checks to make sure the key exists
+        cout << name << *score << endl;
     else
         cout << "This student is not present in the table" << endl;
 }
@@ -126,7 +127,7 @@ void change(Table *grades) {
     string name;
     int score;
     cin >> name >> score;
-    if (grades->remove(name))
+    if (grades->remove(name))//only works if name is already present
         grades->insert(name, score);
     else
         cout << "This student is not present in the table" << endl;
@@ -146,7 +147,7 @@ void print(Table *grades) {
         grades->printAll();
 }
 
-//This function number of entries in the table
+//This function prints number of entries in the table
 void size(Table *grades) {
     int entries = grades->numEntries();
     cout << "The total number of entries in the table is: " << entries << endl;
@@ -160,7 +161,7 @@ void stats(Table *grades) {
 //This function prints out the basic help guide
 void help() {
     cout << "insert <name> <score>\n\tInsert this name and score in the grade table. If this name was already present, print a message to that effect, and don't do the insert." << endl;
-    cout << "change name newscore \n\tChange the score for name.Print an appropriate message if this name isn't present." << endl;
+    cout << "change <name> <newscore> \n\tChange the score for name.Print an appropriate message if this name isn't present." << endl;
     cout << "lookup <name> \n\tLookup the name, and print out his or her score, or a message indicating that student is not in the table." << endl;
     cout << "remove <name> \n\tRemove this student. If this student wasn't in the grade table, print a message to that effect." << endl;
     cout << "print \n\tPrints out all names and scores in the table." << endl;
