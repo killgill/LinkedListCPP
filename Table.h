@@ -1,5 +1,5 @@
-// Name:
-// USC NetID:
+// Name: Karan Singh Gill
+// USC NetID: karansig
 // CSCI 455 PA5
 // Fall 2017
 
@@ -108,7 +108,8 @@ private:
 
   unsigned int hashSize;      // size of the hash table
                               // (used in hashCode method above)
-
+  ListType *hashTable; //dynamic array that stores linkedlists
+  int totalEntries; //just stores total number of entries. This makes it easy to find total entries in the table without having to loop through everything.
 
 };
 

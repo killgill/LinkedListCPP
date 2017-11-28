@@ -1,6 +1,7 @@
-// Name:
-// USC NetID:
-// CS 455 PA5
+// Name: Karan Singh Gill
+// USC NetID: karansig
+// CSCI 455 PA5
+// Fall 2017
 
 // pa5list.cpp
 // a program to test the linked list code necessary for a hash table chain
@@ -25,8 +26,30 @@ using namespace std;
 
 int main() {
 
+    cout << "starting the tester" << endl;
 
+    Node *list;
+    listInit(list);
+    listPrint(list);
+    listRemove("gaurav",list);
+    listInsert("alex", 0, list);
+    listInsert("brandon", 2, list);
+    listInsert("daniel", 3, list); 
+    listInsert("daniel", 3, list); 
+    cout << "about to print list" << endl;
+    listPrint(list);
 
+    cout << "alex is pledge #" << *listLookup("alex",list) << endl;
+    cout << "brandon is pledge #" << *listLookup("brandon",list) << endl;
+    cout << "daniel is pledge #" << *listLookup("daniel",list) << endl;
+
+    cout << "numnodes" << listSize(list) << endl;
+    listPrint(list);
+
+    listRemove("brandon",list);
+    cout << "removed brandon" << endl;
+    listPrint(list);
+    cout << listSize(list) << endl;
 
   return 0;
 }
