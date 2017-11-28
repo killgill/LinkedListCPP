@@ -116,7 +116,7 @@ void lookup(Table *grades) {
     cin >> name;
     int *score = grades->lookup(name);//points at the score
     if (score != NULL)//checks to make sure the key exists
-        cout << name << *score << endl;
+        cout << name << " " << *score << endl;
     else
         cout << "This student is not present in the table" << endl;
 }
