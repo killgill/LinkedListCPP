@@ -61,51 +61,55 @@ int main(int argc, char * argv[]) {
   // add more code here
   // Reminder: use -> when calling Table methods, since grades is type Table*
 
-  cmd(grades);
+  cmd(grades); //runs the loop that continuosly takes commands from the user
 
   return 0;
 }
 
+//This function takes the grades table as an input and checks the command line for a command.
+//Upon receiving a command, it checks to see if the command is valid, and if so,
+//it calls the relevant function to execute that command.
 void cmd(Table *grades) {
     while (true) {
-        cout << "cmd>";
+        cout << "cmd>";//prints cmd>
         string command;
-        cin >> command;
+        cin >> command;//writes the first word entered to the string command
         if (command == "insert")
             insert(grades);
         else if (command == "change")
             change(grades);
-        else if (command == "lookup")  
+        else if (command == "lookup")
             lookup(grades);
         else if (command == "remove")
             remove(grades);
-        else if (command == "print")    // Prints out all names and scores in the table.
+        else if (command == "print")
             print(grades);
-        else if (command == "size")     // Prints out the number of entries in the table.
+        else if (command == "size")
             size(grades);
-        else if (command == "stats")   // Prints out statistics about the hash table at this point.
+        else if (command == "stats")
             stats(grades);
         else if (command == "help")
             help();
-        else if (command == "quit")    // Exits the program.
+        else if (command == "quit")
             quit();
         else {
-            cin.ignore(9000, '\n');
-            cout << "ERROR: invalid command" << endl;
+            cin.ignore(9000, '\n');//ignores until the end of the line, going back to the beginninf of the loop
+            cout << "ERROR: invalid command\n\n" << endl;
             help();
         }
     }
 }
 
+//This function inserts a student and a grade if the student is not already present
 void insert(Table *grades) {
     string name;
     int score;
     cin >> name >> score;
     if (!grades->insert(name, score))
         cout << "This student is already present in the table" << endl;
-    grades->insert(name, score);
 }
 
+//This function looks up a student in the table and returns the student's score
 void lookup(Table *grades) {
     string name;
     cin >> name;
@@ -116,6 +120,8 @@ void lookup(Table *grades) {
         cout << "This student is not present in the table" << endl;
 }
 
+//This function looks up a student in the table, and if the student is present, removes the entry 
+//and adds a new entry with different grades, effectively "changing" the grade
 void change(Table *grades) {
     string name;
     int score;
@@ -124,9 +130,9 @@ void change(Table *grades) {
         grades->insert(name, score);
     else
         cout << "This student is not present in the table" << endl;
-
 }
 
+//This function removes a student and their score from the table if the student is present
 void remove(Table *grades) {
     string name;
     cin >> name;
@@ -134,20 +140,24 @@ void remove(Table *grades) {
         cout << "This student is not present in the table" << endl;
 }
 
+//This function prints all the students and their grades in no particular order
 void print(Table *grades) {
     if (grades->numEntries() > 0)
         grades->printAll();
 }
 
+//This function number of entries in the table
 void size(Table *grades) {
     int entries = grades->numEntries();
     cout << "The total number of entries in the table is: " << entries << endl;
 }
 
+//This function prints hashstats
 void stats(Table *grades) {
     grades->hashStats(cout);
 }
 
+//This function prints out the basic help guide
 void help() {
     cout << "insert <name> <score>\n\tInsert this name and score in the grade table. If this name was already present, print a message to that effect, and don't do the insert." << endl;
     cout << "change name newscore \n\tChange the score for name.Print an appropriate message if this name isn't present." << endl;
@@ -160,6 +170,7 @@ void help() {
     cout << "quit \n\tExits the program" << endl;
 }
 
+//This function quits the program
 void quit() {
     cout << "Exiting the program now" << endl;
     exit(0);

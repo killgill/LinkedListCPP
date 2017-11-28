@@ -1,5 +1,5 @@
-// Name:
-// USC NetID:
+// Name: Karan Singh Gill
+// USC NetID: karansig
 // CSCI 455 PA5
 // Fall 2017
 
@@ -36,24 +36,18 @@ typedef Node * ListType;
 //that operate on a list here (i.e., each includes a parameter of type
 //ListType or ListType&).  No function definitions go in this file.
 
-//Returns the node's address or NULL
+//Initializes the list
 void listInit(ListType &list);
+//inserts element
 void listInsert(string insertKey, int insertValue, ListType &list);
+//removes element
 bool listRemove(string removeTarget, ListType &list);
+//prints all elements
 void listPrint(ListType &list);
+//returns pointer to the value for a given key
 int* listLookup(string target, ListType &list);
+//computes and returns size of the list
 int listSize(ListType list);
-
-
-
-
-
-
-
-
-
-
-
 
 // keep the following line at the end of the file
 #endif
